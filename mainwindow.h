@@ -3,7 +3,9 @@
 
 #include <QMainWindow>
 #include <QVector>
+#include <QMessageBox>
 #include "human.h"
+#include <QSignalSpy>
 
 namespace Ui {
 class MainWindow;
@@ -22,9 +24,12 @@ private slots:
     void on_deleteButton_clicked();
     void change_log(QString name, int age);
 
+    void on_spyButton_clicked();
+
 private:
+    QSignalSpy *spy;
     Human m_person;
-    QVector<Human*> collection;
+    QVector<Human> collection;
     QString log;
     Ui::MainWindow *ui;
 

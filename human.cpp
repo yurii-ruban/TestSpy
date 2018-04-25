@@ -2,12 +2,25 @@
 
 Human::Human(QObject* parent):QObject(parent)
 {
-    emit hello(name, age);
+    emit logger(name, age);
 }
 
 Human::Human(QString _name, int _age):name(_name), age(_age)
 {
-    emit hello(name, age);
+    emit logger(name, age);
+}
+
+Human::Human(const Human &H)
+{
+    this->name=H.get_name();
+    this->age=H.get_age();
+}
+
+Human &Human::operator =(const Human& H)
+{
+    this->name=H.get_name();
+    this->age=H.get_age();
+    return *this;
 }
 
 void Human::changeName(QString _name)
@@ -15,29 +28,24 @@ void Human::changeName(QString _name)
     name=_name;
 }
 
-void Human::set_name(QString _name)
+void Human::setter(QString _name, int _age)
 {
     name=_name;
-    emit hello(name, age);
-}
-
-void Human::set_age(int _age)
-{
     age= _age;
-    emit hello(name, age);
+    emit logger(name, age);
 }
 
-QString Human::get_name()
+QString Human::get_name() const
 {
     return name;
 }
 
-int Human::get_age()
+int Human::get_age() const
 {
     return age;
 }
 
 Human::~Human()
 {
-    emit goodbye(name, age);
+    qDebug()<<"COMPOS DESTRUCTOR";
 }

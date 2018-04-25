@@ -3,6 +3,7 @@
 
 #include<QObject>
 #include <QString>
+#include <QDebug>
 
 class Human: public QObject
 {
@@ -10,11 +11,12 @@ class Human: public QObject
 public:
     explicit Human(QObject *parent = nullptr);
     Human(QString _name, int _age);
+    Human(const Human& H);
+    Human& operator =(const Human& H);
     void changeName(QString _name);
-    void set_name(QString _name);
-    void set_age(int _age);
-    QString get_name();
-    int get_age();
+    void setter(QString _name, int _age);
+    QString get_name() const;
+    int get_age() const;
     ~Human();
 
 private:
@@ -22,8 +24,7 @@ private:
     int age;
 
 signals:
-    void goodbye(QString name, int age);
-    void hello(QString name, int age);
+    void logger(QString name, int age);
 };
 
 #endif // HUMAN_H
