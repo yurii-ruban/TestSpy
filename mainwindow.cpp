@@ -13,8 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QValidator *validator = new QRegExpValidator(rx, this);
     ui->ageEdit->setValidator(validator);
 
-    spy= new QSignalSpy(&m_person, SIGNAL(logger(QString,int)));
     qRegisterMetaType<Human>("Human");
+    spy= new QSignalSpy(&m_person, SIGNAL(logger(QString,int)));
 }
 
 MainWindow::~MainWindow()
