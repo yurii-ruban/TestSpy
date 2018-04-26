@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QVector>
+#include <QStack>
 #include <QMessageBox>
 #include "human.h"
 #include <QSignalSpy>
@@ -29,7 +29,7 @@ private slots:
 private:
     QSignalSpy *spy;
     Human m_person;
-    QVector<Human> collection;
+    QStack<Human> collection;
     QString log;
     Ui::MainWindow *ui;
 

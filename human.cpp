@@ -47,5 +47,4 @@ int Human::get_age() const
 
 Human::~Human()
 {
-    qDebug()<<"COMPOS DESTRUCTOR";
 }
