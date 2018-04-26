@@ -22,7 +22,7 @@ public:
 private slots:
     void on_addButton_clicked();
     void on_deleteButton_clicked();
-    void change_log(QString name, int age);
+    void change_log(Human H);
 
     void on_spyButton_clicked();
 

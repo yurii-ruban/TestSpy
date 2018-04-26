@@ -2,12 +2,12 @@
 
 Human::Human(QObject* parent):QObject(parent)
 {
-    emit logger(name, age);
+    emit logger(*this);
 }
 
 Human::Human(QString _name, int _age):name(_name), age(_age)
 {
-    emit logger(name, age);
+    emit logger(*this);
 }
 
 Human::Human(const Human &H)
@@ -27,7 +27,7 @@ void Human::setter(QString _name, int _age)
 {
     name=_name;
     age= _age;
-    emit logger(name, age);
+    emit logger(*this);
 }
 
 QString Human::get_name() const

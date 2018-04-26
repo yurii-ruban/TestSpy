@@ -25,7 +25,7 @@ private:
     int age;
 
 signals:
-    void logger(QString name, int age);
+    void logger(Human h);
 };
 
 #endif // HUMAN_H

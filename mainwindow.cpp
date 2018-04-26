@@ -13,8 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QValidator *validator = new QRegExpValidator(rx, this);
     ui->ageEdit->setValidator(validator);
 
-    //qRegisterMetaType<Human>("Human");
-    spy= new QSignalSpy(&m_person, SIGNAL(logger(QString,int)));
+    qRegisterMetaType<Human>("Human");
+    spy= new QSignalSpy(&m_person, SIGNAL(logger(Human)));
 }
 
 MainWindow::~MainWindow()
@@ -61,9 +61,10 @@ void MainWindow::on_deleteButton_clicked()
     }
 }
 
-void MainWindow::change_log(QString name, int age)
+void MainWindow::change_log(Human H)
 {
-    log= "("+name+", "+QString::number(age)+")";
+    m_person=H;
+    log= "("+m_person.get_name()+", "+m_person.get_age()+")";
 }
 
 void MainWindow::on_spyButton_clicked()
