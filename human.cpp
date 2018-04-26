@@ -23,11 +23,6 @@ Human &Human::operator =(const Human& H)
     return *this;
 }
 
-void Human::changeName(QString _name)
-{
-    name=_name;
-}
-
 void Human::setter(QString _name, int _age)
 {
     name=_name;

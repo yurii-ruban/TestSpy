@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QValidator *validator = new QRegExpValidator(rx, this);
     ui->ageEdit->setValidator(validator);
 
-    qRegisterMetaType<Human>("Human");
+    //qRegisterMetaType<Human>("Human");
     spy= new QSignalSpy(&m_person, SIGNAL(logger(QString,int)));
 }
 
@@ -36,15 +36,7 @@ void MainWindow::on_addButton_clicked()
 
 void MainWindow::on_deleteButton_clicked()
 {
-    if(!collection.isEmpty())
-    {
-        m_person.setter(collection.last().get_name(),collection.last().get_age());
-
-        ui->logger->setStyleSheet("color:red");
-        ui->logger->setText(log+" deleted");
-        collection.pop_back();
-    }
-    else
+    if(collection.isEmpty())
     {
         QMessageBox msgBox;
         msgBox.setText("Container is empty, add more people!");
@@ -52,6 +44,15 @@ void MainWindow::on_deleteButton_clicked()
         msgBox.setDefaultButton(QMessageBox::Ok);
         msgBox.exec();
         ui->logger->setText("");
+    }
+    else
+    {
+
+        m_person.setter(collection.last().get_name(),collection.last().get_age());
+
+        ui->logger->setStyleSheet("color:red");
+        ui->logger->setText(log+" deleted");
+        collection.pop_back();
     }
 }
 

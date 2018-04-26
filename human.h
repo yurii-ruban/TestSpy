@@ -11,13 +11,14 @@ class Human: public QObject
 public:
     explicit Human(QObject *parent = nullptr);
     Human(QString _name, int _age);
+    ~Human();
+
     Human(const Human& H);
     Human& operator =(const Human& H);
-    void changeName(QString _name);
+
     void setter(QString _name, int _age);
     QString get_name() const;
     int get_age() const;
-    ~Human();
 
 private:
     QString name;
