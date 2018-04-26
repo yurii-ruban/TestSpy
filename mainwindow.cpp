@@ -25,6 +25,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_addButton_clicked()
 {
+    if(ui->nameEdit->text()=="" || ui->ageEdit->text()=="")
+    {
+        ui->nameEdit->setText("John Doe");
+        ui->ageEdit->setText("1");
+    }
+
     m_person.setter(ui->nameEdit->text(), ui->ageEdit->text().toInt());
     collection.push_back(m_person);
     ui->logger->setText(log+" added");
@@ -47,7 +53,6 @@ void MainWindow::on_deleteButton_clicked()
     }
     else
     {
-
         m_person.setter(collection.last().get_name(),collection.last().get_age());
 
         ui->logger->setStyleSheet("color:red");
